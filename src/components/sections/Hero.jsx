@@ -104,56 +104,20 @@ export default function Hero() {
         </svg>
       </div> */}
       <div
-        className="hero-visual"
+        className="hero-visual hero-video-visual"
         id="prime-logo-visual"
-        role="img"
-        aria-label="Prime Automation globe, surrounded by a connected network and purple orbital lines."
+        aria-hidden="true"
       >
-        {/* === GIF REPLACEMENT HERE === */}
-        {/* Update the src to point to your actual GIF file in the public folder */}
-        {/* <img 
-          src="/assets/test1.gif"
-          alt="Animated Purple Globe Network" 
-          style={{ width: "100%", height: "50%", objectFit: "contain", position: "relative", zIndex: 1 }} 
-        /> */}
-
         <video
           className="hero-globe-media"
           autoPlay
           loop
           muted
           playsInline
-          poster="/assets/anime.webm"
-          style={{ width: "100%", aspectRatio: "1 / 1", objectFit: "contain" }}
+          preload="metadata"
         >
           <source src="/assets/anime.webm" type="video/webm" />
-          {/* <source src="/assets/vidlogo.mp4" type="video/mp4" /> */}
         </video>
-
-
-
-        {/* Note: I left your SVG node lights here in case you want them to overlay the GIF. 
-            If the GIF already includes these glowing nodes, you can delete this entire <svg> block. */}
-        <svg
-          className="hero-node-lights"
-          viewBox="-13 -15 290 290"
-          aria-hidden="true"
-          focusable="false"
-          style={{ position: "absolute", top: 0, left: 0, zIndex: 2, pointerEvents: "none" }}
-        >
-          <g className="hero-node-light">
-            <circle cx="73.03" cy="39.49" r="4.4" fill="#d95af0" opacity=".22"></circle>
-            <circle cx="73.03" cy="39.49" r="2.1" fill="#f1b2ff"></circle>
-          </g>
-          <g className="hero-node-light">
-            <circle cx="192.4" cy="90.42" r="4.4" fill="#d95af0" opacity=".22"></circle>
-            <circle cx="192.4" cy="90.42" r="2.1" fill="#f1b2ff"></circle>
-          </g>
-          <g className="hero-node-light">
-            <circle cx="72.72" cy="201.29" r="4.4" fill="#d95af0" opacity=".22"></circle>
-            <circle cx="72.72" cy="201.29" r="2.1" fill="#f1b2ff"></circle>
-          </g>
-        </svg>
       </div>
 
       <div className="hero-bottom-bar">
