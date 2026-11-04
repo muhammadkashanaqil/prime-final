@@ -1,0 +1,199 @@
+{
+  "source": "updatedwithbackend.zip",
+  "date": "2026-11-04",
+  "productionBuild": "passed",
+  "typeCheck": "passed",
+  "interactionChecks": 24,
+  "interactionRequests": "mocked; no live writes",
+  "adminRequestContractFiles": 11,
+  "backendOrDatabaseModifications": false,
+  "dependencyChanges": false,
+  "browserVisualReview": "Passed read-only desktop/mobile homepage production HTML and CSS snapshots; case-study form rendered from the actual component with fixture data. Client interactions verified separately using mocked component checks.",
+  "liveFastAPIConnectivity": "not verified; request/response format checked against supplied FastAPI source",
+  "protectedFiles": [
+    {
+      "path": ".env.local",
+      "sha256": "fee9a2b922532a9205a0f4112e3e52d0d634efd99be38cc7922f3d30957f7c4b"
+    },
+    {
+      "path": "prisma/seed.ts",
+      "sha256": "0fb2d57fe8220c717aed6397865f94e63b64904b6524c7cd3fce4c0c68b26d28"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "acbf11ecb8e371b685a54cc2a41a12ad23b71074a340f7a10b3456ec7be3dcce"
+    },
+    {
+      "path": "prisma/dev.db",
+      "sha256": "9ffb9dd763a35eb82d9657d251dd68a288ab0efa0097460fffdf26a9a31cee42"
+    },
+    {
+      "path": "src/middleware.ts",
+      "sha256": "549e42958d59309f59489800238a77e36ced79102d885986b2a4e72333d0d21a"
+    },
+    {
+      "path": "src/lib/db.ts",
+      "sha256": "2ee64a5f895861bc3c39b52f90a91e24432768307923f2e29b545c7c2e84a237"
+    },
+    {
+      "path": "src/lib/auth.ts",
+      "sha256": "ece74cb7d88d86e1f4f278e2293f50b65597478e67eab9b99e54c59d6bd433d2"
+    },
+    {
+      "path": "src/app/api/chat/route.ts",
+      "sha256": "ed89460d660a2d5669198d5b4fc8825f7133d0664101b84a378551fdea194a8d"
+    },
+    {
+      "path": "src/app/api/contact/route.ts",
+      "sha256": "a3712a998d7b42e22f630e12fd7c772e687d0c1db652f2eacbf469f60ab05949"
+    },
+    {
+      "path": "src/app/api/admin/faqs/route.ts",
+      "sha256": "ebc019f6f7dc55f612fe01915d75ae3301cf93e5b6d2303ecdcb4ef0659f3fa3"
+    },
+    {
+      "path": "src/app/api/admin/case-studies/route.ts",
+      "sha256": "3059a51af5cb46a696ff8858c3f586f4a67277691cee064c5d3864ce6e7631e7"
+    },
+    {
+      "path": "src/app/api/admin/posts/route.ts",
+      "sha256": "7e0b0d6ae07f7a98a4b38aa996c468a78968713daa6003c34e87b7828d02eb9e"
+    },
+    {
+      "path": "src/app/api/admin/upload/route.ts",
+      "sha256": "b59b7c09f9d947a8faf4c48398e9e2ee8790291f886123b4b3ee6b1f25e5bc03"
+    },
+    {
+      "path": "src/app/api/admin/settings/route.ts",
+      "sha256": "fffb9df6e57b44d76789312b62e360eb09ac8f3c0502012468b583f3684bbae1"
+    },
+    {
+      "path": "src/app/api/admin/leads/route.ts",
+      "sha256": "6fe9c9656b716f75ee6f533157883edecdc1f13786caf0f80f9dcdae77f626c2"
+    },
+    {
+      "path": "src/app/api/auth/logout/route.ts",
+      "sha256": "9840d8dc93399a29ccee71ea4bff4ae38f07d1f74eae9682ef0972f90b2fd061"
+    },
+    {
+      "path": "src/app/api/auth/login/route.ts",
+      "sha256": "e5b0847c9e533c9e3eb4e702afa9ac409b5fe8b72c6af405c418ad6b1f92af8d"
+    },
+    {
+      "path": "src/app/api/auth/session/route.ts",
+      "sha256": "d06cce7036c19f234d21b29cdca9c2627c09a2b4a7710a8e4b5b889e81aab8a9"
+    },
+    {
+      "path": "src/lib/validators/index.ts",
+      "sha256": "99bb3b5449f5b946ea7f19a04647f38dad5259ab403bf8fbb76895daa542cd62"
+    },
+    {
+      "path": "src/lib/cms/faqs.ts",
+      "sha256": "38045fbd6db2d63a8437e22ddf549c6f43cc4463e57237683545be73d3aa1a25"
+    },
+    {
+      "path": "src/lib/cms/leads.ts",
+      "sha256": "e17df5f88abc37ea001ec55f18e903a15953d5bff9a65b0af8bf47e86184e0c3"
+    },
+    {
+      "path": "src/lib/cms/settings.ts",
+      "sha256": "b308045109702a8c76032cbeefa10a208cbd0e3e0058478b98aed1fdd171278f"
+    },
+    {
+      "path": "src/lib/cms/case-studies.ts",
+      "sha256": "29d78aa8b8504597d6c061a3ade69af696ca37e8bd1325592a08e26014477d06"
+    },
+    {
+      "path": "src/lib/cms/posts.ts",
+      "sha256": "d22b72951dd12b1077e2de93ef737962f8942d0bd83d61dad3db90b289d5dcfc"
+    }
+  ],
+  "frontendFiles": [
+    ".env.example",
+    "src/app/(marketing)/about/page.tsx",
+    "src/app/(marketing)/case-studies/CaseStudiesDirectory.tsx",
+    "src/app/(marketing)/case-studies/[slug]/page.tsx",
+    "src/app/(marketing)/case-studies/page.tsx",
+    "src/app/(marketing)/contact/ContactFormClient.tsx",
+    "src/app/(marketing)/contact/page.tsx",
+    "src/app/(marketing)/faq/FAQDirectory.tsx",
+    "src/app/(marketing)/faq/page.tsx",
+    "src/app/(marketing)/insights/InsightsDirectory.tsx",
+    "src/app/(marketing)/insights/[slug]/page.tsx",
+    "src/app/(marketing)/insights/page.tsx",
+    "src/app/(marketing)/layout.tsx",
+    "src/app/(marketing)/page.tsx",
+    "src/app/(marketing)/privacy/page.tsx",
+    "src/app/(marketing)/services/[slug]/page.tsx",
+    "src/app/(marketing)/services/page.tsx",
+    "src/app/(marketing)/terms/page.tsx",
+    "src/app/(marketing)/thank-you/ThankYouClient.tsx",
+    "src/app/(marketing)/thank-you/page.tsx",
+    "src/app/admin/case-studies/CaseStudiesListClient.tsx",
+    "src/app/admin/faqs/FAQsListClient.tsx",
+    "src/app/admin/layout.tsx",
+    "src/app/admin/leads/LeadsListClient.tsx",
+    "src/app/admin/login/page.tsx",
+    "src/app/admin/page.tsx",
+    "src/app/admin/posts/PostsListClient.tsx",
+    "src/app/admin/settings/SettingsClient.tsx",
+    "src/app/layout.tsx",
+    "src/app/not-found.tsx",
+    "src/components/DialogHost.jsx",
+    "src/components/SiteEffects.jsx",
+    "src/components/admin/AdminShell.tsx",
+    "src/components/admin/AdminSidebar.tsx",
+    "src/components/admin/ArticleEditor.tsx",
+    "src/components/admin/CaseStudyForm.tsx",
+    "src/components/admin/DeleteConfirmModal.tsx",
+    "src/components/admin/FAQForm.tsx",
+    "src/components/admin/ImageUploader.tsx",
+    "src/components/admin/PostForm.tsx",
+    "src/components/admin/use-dialog-focus.ts",
+    "src/components/chatbot/ChatWidget.tsx",
+    "src/components/marketing/Breadcrumbs.tsx",
+    "src/components/marketing/ContentDirectory.tsx",
+    "src/components/marketing/PageKit.tsx",
+    "src/components/marketing/RichTextRenderer.tsx",
+    "src/components/marketing/service-copy.ts",
+    "src/components/sections/Faq.tsx",
+    "src/components/sections/Footer.jsx",
+    "src/components/sections/Header.jsx",
+    "src/components/sections/Insights.tsx",
+    "src/components/sections/Services.jsx",
+    "src/components/sections/Work.tsx",
+    "src/components/ui/AuditForm.jsx",
+    "src/lib/chat-client.ts",
+    "src/lib/site-presentation.ts",
+    "src/styles/admin.css",
+    "src/styles/chat.css",
+    "src/styles/pages.css"
+  ],
+  "revision": "UI Revision 04",
+  "homepageSelectedSystems": "Original animated illustrative systems; CMS images retained on Our Work and project detail pages",
+  "brandPalette": [
+    "#c82aef",
+    "#0c1322",
+    "#c1c1c1",
+    "#ffffff"
+  ],
+  "narrativeEditor": "Write, Preview, Source for challenge, solution, implementation and results; text/JSON and unknown keys preserved",
+  "reducedMotion": "Covered by stylesheet rules and motion-off interaction test",
+  "filesChangedInThisRevision": [
+    "README.md",
+    "FRONTEND-VALIDATION.json",
+    "START-HERE.md",
+    "START-WINDOWS.cmd",
+    "VERSION.txt",
+    "src/styles/motion.css",
+    "src/components/admin/CaseStudyForm.tsx"
+  ],
+  "liveAuthenticatedDatabaseWorkflows": "Not exercised; backend routes, database files and request contracts preserved.",
+  "windowsStarter": "Reviewed, not executed on Windows; runs from its own folder, installs locked dependencies if missing, generates Prisma Client, then starts Next.js.",
+  "revision04Changes": [
+    "Neutral gray Selected Systems heading",
+    "Desktop floating navigation fits the left gutter and waits for effect initialization",
+    "Clear case-study Featured label",
+    "Uniquely named source folder, version marker, and Windows startup instructions"
+  ]
+}

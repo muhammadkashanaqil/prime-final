@@ -1,0 +1,413 @@
+/* October update: small, scoped animations; no animation-library dependency. */
+
+/* Two identical groups make a continuous, seam-free logo slide. */
+.tool-names.tools-marquee {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 3%,
+    #000 97%,
+    transparent
+  );
+}
+.tool-logo-track {
+  display: flex;
+  width: max-content;
+  min-width: 200%;
+  animation: tool-logo-slide 30s linear infinite;
+}
+.tool-logo-group {
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: space-around;
+  gap: clamp(38px, 4.5vw, 80px);
+  padding-inline-end: clamp(38px, 4.5vw, 80px);
+}
+.tool-logo-group > span {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.tools-marquee:hover .tool-logo-track {
+  animation-play-state: paused;
+}
+@keyframes tool-logo-slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Each open service has its own quiet visual cue. */
+.service .agent-eye {
+  transform-origin: center;
+  animation: service-eye-blink 4.8s ease-in-out infinite;
+}
+.service .agent-spark {
+  animation: service-spark 4.8s ease-in-out infinite;
+}
+.service .flow-art > span {
+  animation: service-flow-step 3.6s ease-in-out infinite;
+}
+.service .flow-art > span:nth-of-type(2) {
+  animation-delay: 0.8s;
+}
+.service .flow-art > span:nth-of-type(3) {
+  animation-delay: 1.6s;
+}
+.service .flow-art > i {
+  position: relative;
+}
+.service .flow-art > i::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #9514b3;
+  opacity: 0;
+  animation: service-data-travel 3.6s ease-in-out infinite;
+}
+.service .flow-art > i:nth-of-type(2)::after {
+  animation-delay: 0.8s;
+}
+.service .pipeline-art .icon {
+  animation: service-data-breathe 4s ease-in-out infinite;
+}
+.service .custom-art > span {
+  animation: service-core 5s ease-in-out infinite;
+}
+.service .integration-art > span {
+  animation: service-connect 3.8s ease-in-out infinite;
+}
+.service .integration-art > span:nth-child(2) {
+  animation-delay: 0.35s;
+}
+.service .integration-art > span:nth-child(3) {
+  animation-delay: 0.7s;
+}
+.service .audit-art .icon {
+  animation: service-improve 3.6s ease-in-out infinite;
+}
+.service:not([open]) .service-art *,
+.service:not([open]) .service-art *::after {
+  animation-play-state: paused !important;
+}
+
+@keyframes service-eye-blink {
+  0%,
+  40%,
+  46%,
+  51%,
+  57%,
+  100% {
+    transform: translateY(-3px) scaleY(1);
+  }
+  43%,
+  54% {
+    transform: translateY(-3px) scaleY(0.12);
+  }
+}
+@keyframes service-spark {
+  0%,
+  65%,
+  100% {
+    transform: rotate(0) scale(1);
+  }
+  78% {
+    transform: rotate(10deg) scale(1.06);
+  }
+}
+@keyframes service-flow-step {
+  0%,
+  32%,
+  100% {
+    transform: translateY(0);
+  }
+  15% {
+    transform: translateY(-4px);
+  }
+}
+@keyframes service-data-travel {
+  0%,
+  5%,
+  34%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  29% {
+    opacity: 1;
+    transform: translateX(20px);
+  }
+  33% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+@keyframes service-data-breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-4px);
+    opacity: 0.75;
+  }
+}
+@keyframes service-core {
+  0%,
+  100% {
+    transform: rotate(-6deg) scale(1);
+  }
+  50% {
+    transform: rotate(6deg) scale(1.06);
+  }
+}
+@keyframes service-connect {
+  0%,
+  65%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  30% {
+    transform: translateY(-5px);
+    opacity: 0.7;
+  }
+}
+@keyframes service-improve {
+  0%,
+  65%,
+  100% {
+    transform: translate(0, 0);
+  }
+  35% {
+    transform: translate(4px, -4px);
+  }
+}
+
+/* Faster tour reveals, retaining immediate manual tab selection. */
+.feature-panel.is-entering .feature-summary {
+  animation-duration: 0.3s;
+}
+.feature-enhanced .demo-step {
+  transition-duration: 0.32s;
+}
+.feature-enhanced .demo-step .demo-bars i {
+  transition-duration: 0.5s;
+}
+
+/* A staggered entrance without blur, scaling text or looping the headline. */
+.hero-line-inner {
+  animation: hero-line-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+.hero-title-line:nth-child(2) .hero-line-inner {
+  animation-delay: 0.24s;
+}
+.hero-title-line:nth-child(3) .hero-line-inner {
+  animation-delay: 0.38s;
+}
+.hero-eyebrow {
+  animation: hero-copy-rise 0.65s var(--ease) 0.05s both;
+}
+.hero-description {
+  animation: hero-copy-rise 0.65s var(--ease) 0.56s both;
+}
+.hero-actions {
+  animation: hero-copy-rise 0.65s var(--ease) 0.7s both;
+}
+.hero-note {
+  animation: hero-copy-rise 0.65s var(--ease) 0.82s both;
+}
+.hero-paused .hero-copy * {
+  animation-play-state: paused !important;
+}
+@keyframes hero-line-rise {
+  from {
+    opacity: 0;
+    transform: translateY(105%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hero-copy-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Preserve the purple background and use clear contrasting foregrounds. */
+.contact-section,
+.contact-main h2 > span,
+.contact-bottom > p,
+.contact-bottom > div > span {
+  color: #fff;
+}
+.contact-top,
+.contact-orb span,
+.contact-bottom > p,
+.contact-bottom > div > span {
+  text-shadow: 0 1px 2px #570c7399;
+}
+.contact-orb {
+  color: #fff;
+  border-color: #ffffffb3;
+  background: #42105226;
+}
+.contact-orb:hover {
+  background: #42105255;
+}
+.contact-bottom {
+  border-color: #ffffff66;
+}
+.contact-bottom .button-dark {
+  background: #fff;
+  color: #241033;
+  border-color: #fff;
+}
+.contact-bottom .button-dark:hover {
+  background: #f9e9fe;
+  color: #241033;
+}
+.contact-section a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 6px;
+}
+
+/* A small desktop ring follows the native pointer; it never catches clicks. */
+.pointer-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 85;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+.pointer-follower > span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ce58edb3;
+  border-radius: 50%;
+  background: #c82aef0d;
+  transform: translate(-50%, -50%);
+  transition:
+    transform 0.2s var(--ease),
+    border-color 0.2s,
+    background 0.2s;
+}
+.pointer-follower.is-visible {
+  opacity: 1;
+}
+.pointer-follower.is-interactive > span {
+  transform: translate(-50%, -50%) scale(1.55);
+}
+.pointer-follower.is-contrast > span {
+  border-color: #fff;
+  background: #ffffff0d;
+}
+@media (hover: none), (pointer: coarse) {
+  .pointer-follower {
+    display: none;
+  }
+}
+
+/* Static mode presents all six logos, with no clipped duplicate content. */
+html.motion-off .tool-logo-track {
+  animation: none !important;
+  transform: none;
+  width: 100%;
+  min-width: 0;
+}
+html.motion-off .tool-logo-group {
+  flex: 1 1 0;
+  min-width: 0;
+  flex-wrap: wrap;
+  padding: 0;
+  gap: 25px 30px;
+}
+html.motion-off .tool-logo-group[aria-hidden="true"] {
+  display: none;
+}
+html.motion-off .tools-marquee {
+  mask-image: none;
+}
+html.motion-off .pointer-follower {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html:not(.motion-on) .tool-logo-track {
+    animation: none !important;
+    transform: none;
+    width: 100%;
+    min-width: 0;
+  }
+  html:not(.motion-on) .tool-logo-group {
+    flex: 1 1 0;
+    min-width: 0;
+    flex-wrap: wrap;
+    padding: 0;
+    gap: 25px 30px;
+  }
+  html:not(.motion-on) .tool-logo-group[aria-hidden="true"] {
+    display: none;
+  }
+  html:not(.motion-on) .tools-marquee {
+    mask-image: none;
+  }
+  html:not(.motion-on) .pointer-follower {
+    display: none;
+  }
+}
+
+
+
+
+/* Restored homepage system illustrations, separate from the CMS project gallery. */
+.work .project-grid { grid-template-columns: 1.15fr 1fr; }
+.work .project-grid.filtered { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.work .project[hidden] { display: none; }
+.work .chart-line { stroke: #c82aef; }
+.work .document-visual { background: #c82aef; color: #0c1322; }
+.work .document-visual .project-topline,
+.work .document-visual .project-visual-bottom > span:first-child {
+    color: #0c1322;
+}
+.contact-section { background: #c82aef; }
+.contact-bottom .button-dark { color: #0c1322; }
+.pointer-follower > span { border-color: #c82aef80; }
+@media (max-width: 760px) {
+    .work .project-grid,
+    .work .project-grid.filtered { display: flex; flex-direction: column; }
+}
+
+/* Keep the reference's secondary work heading neutral. */
+.work .muted-heading { color: #c1c1c1; }
+/* Navigation only appears once route effects have initialized. */
+html:not(.reveal-ready) .side-nav { opacity: 0; pointer-events: none; }
+@media (min-width: 1001px) {
+    .side-nav { left: 8px; padding: 4px; }
+    .side-nav a { width: 34px; height: 42px; }
+    .side-nav a .icon { width: 18px; height: 18px; }
+    .side-nav a > span { left: 44px; top: 8px; }
+}
