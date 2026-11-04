@@ -969,3 +969,48 @@ html.motion-off .cinematic-hero *:after {
     .cinematic-hero .hero-note { font-size: 10px; margin-top: 20px; }
     .cinematic-hero .hero-cta { font-size: 13px; }
 }
+
+
+
+
+
+/* Keep the existing responsive globe position and size. */
+.cinematic-hero .hero-video-visual {
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+
+  /* Fade the rectangular edges without blurring the globe. */
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    #000 55%,
+    transparent 70%
+  );
+  mask-image: radial-gradient(
+    ellipse at center,
+    #000 55%,
+    transparent 70%
+  );
+}
+
+.cinematic-hero .hero-globe-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Place the bottom fade above the video. */
+.hero.cinematic-hero::after {
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Keep the text, buttons, and bottom controls above both. */
+.cinematic-hero .hero-copy {
+  z-index: 3;
+}
+
+.cinematic-hero .hero-bottom-bar {
+  z-index: 4;
+}
