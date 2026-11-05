@@ -236,3 +236,49 @@
 @media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.cursor-light-field{display:none}}
 @media(prefers-reduced-motion:reduce){.scroll-transition>div{transform:none!important;opacity:1!important}}
 
+/* Fix the three Prime Approach cards */
+#about .principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  align-items: start;
+}
+
+/* Stack the content inside each card */
+#about .principles > div {
+  display: block;
+  min-width: 0;
+  padding: 0;
+  border-top: 0;
+}
+
+#about .principles > div > span {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  color: #c82aef;
+}
+
+#about .principles h3 {
+  margin: 0 0 14px;
+  font-size: clamp(24px, 2.2vw, 32px);
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+#about .principles p {
+  margin: 0;
+  max-width: 34ch;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #c1c1c1;
+}
+
+@media (max-width: 760px) {
+  #about .principles {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
