@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getPresentationSettings } from "@/lib/site-presentation";
 import localFont from "next/font/local";
 import "@/styles/styles.css";
+import "@/styles/mobile-fixes.css";
 import "@/styles/features.css";
 import "@/styles/hero.css";
 import "@/styles/motion.css";
