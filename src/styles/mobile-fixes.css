@@ -1,0 +1,244 @@
+/* Import AFTER the site's other stylesheets. Desktop artwork is preserved. */
+@media (max-width: 900px) {
+  /* Separate the floating navigation and chat; include the phone's safe area. */
+  .side-nav {
+    left: 50%;
+    right: auto;
+    top: auto;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%);
+    flex-direction: row;
+    width: max-content;
+    max-width: calc(100% - 24px);
+    padding: 6px;
+    gap: 4px;
+    border-radius: 30px;
+  }
+  .side-nav a {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+  }
+  .side-nav a > span { display: none; }
+  .prime-chat {
+    left: 12px;
+    right: 12px;
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+    pointer-events: none;
+  }
+  .prime-chat-trigger,
+  .prime-chat-panel { pointer-events: auto; }
+  .prime-chat-trigger {
+    min-height: 48px;
+    margin-left: auto;
+  }
+  .prime-chat-panel {
+    width: min(390px, 100%);
+    height: min(610px, calc(100dvh - 164px - env(safe-area-inset-bottom, 0px)));
+    max-height: calc(100dvh - 164px - env(safe-area-inset-bottom, 0px));
+    margin-left: auto;
+    margin-bottom: 10px;
+  }
+  .prime-chat-log { min-height: 0; }
+  .prime-chat-compose input { font-size: 16px; }
+  .site-footer { padding-bottom: calc(98px + env(safe-area-inset-bottom, 0px)); }
+}
+
+@media (max-width: 900px) {
+  #main .wrap {
+    box-sizing: border-box;
+    width: 100%;
+    padding-inline: clamp(18px, 5vw, 28px);
+  }
+
+  /* Let the hero's contents determine its height; put controls in normal flow. */
+  #home.cinematic-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 26px;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    padding: 124px clamp(18px, 5vw, 28px) 30px;
+  }
+  #home .hero-copy {
+    width: 100%;
+    max-width: 540px;
+    min-width: 0;
+    margin-inline: auto;
+  }
+  #home .hero-copy h1 {
+    font-size: clamp(34px, 10vw, 64px);
+    line-height: 1.05;
+  }
+  #home .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  #home .hero-cta {
+    min-width: 0;
+    min-height: 48px;
+    padding: 14px 16px;
+    gap: 12px;
+    font-size: 13px;
+  }
+  #home .hero-visual {
+    position: relative;
+    inset: auto;
+    width: min(100%, 540px);
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    flex: none;
+  }
+  #home .hero-globe-media {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  #home .hero-bottom-bar {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0;
+  }
+  #home .hero-bottom-label { display: none; }
+  #home .hero-scroll-link {
+    min-height: 44px;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+  #home .hero-motion-actions { min-width: 0; margin-left: auto; }
+  #home .hero-motion-actions > button {
+    min-height: 44px;
+    max-width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ffffff33;
+    border-radius: 9px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  #work .project-grid,
+  #work .project-grid.filtered {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+  }
+  #work .project {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    grid-column: 1 / -1;
+  }
+  #work .project[hidden] { display: none; }
+  #work .project-caption {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  #work .project-caption > div { min-width: 0; }
+  #work .project-caption h3 { font-size: clamp(18px, 4.8vw, 23px); }
+  #work .project-topline { gap: 10px; flex-wrap: wrap; }
+  #work .project-visual-bottom > span:first-child {
+    font-family: var(--font-heading), var(--font-inter), Arial, sans-serif;
+    font-size: clamp(23px, 6vw, 29px);
+  }
+
+  /* The data card must grow around its text and chart, not position them over each other. */
+  #work .data-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    min-height: 0;
+    padding: 22px;
+    gap: 24px;
+  }
+  #work .data-visual > .project-topline {
+    position: static;
+    width: 100%;
+  }
+  #work .data-copy,
+  #work .data-dashboard {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    transform: none;
+    scale: none;
+  }
+  #work .data-copy > span {
+    display: block;
+    font-family: var(--font-heading), var(--font-inter), Arial, sans-serif;
+    font-size: clamp(26px, 7vw, 38px);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+  #work .data-copy > p { font-size: 12px; line-height: 1.65; margin-top: 14px; }
+  #work .data-dashboard { padding: 15px 12px; }
+  #work .data-visual:hover .data-dashboard { transform: none; }
+  #work .dashboard-top,
+  #work .chart-bottom { flex-wrap: wrap; gap: 8px; }
+  #work .pipeline-nodes { width: 100%; min-width: 0; gap: 0; }
+  #work .pipeline-nodes > span {
+    flex: 1 1 0;
+    min-width: 0;
+    flex-direction: column;
+    padding: 9px 3px;
+    gap: 6px;
+    font-size: 8px;
+  }
+  #work .pipeline-nodes > i { flex: 0 0 12px; }
+  #work .data-chart > svg { height: auto; aspect-ratio: 24 / 7; }
+  #work .data-visual > .project-arrow {
+    position: static;
+    align-self: flex-end;
+    flex: none;
+    width: 38px;
+    height: 38px;
+  }
+
+  #services .service summary {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr) 32px;
+    gap: 10px;
+    align-items: center;
+  }
+  #services .service summary h3 { min-width: 0; font-size: clamp(20px, 5vw, 28px); }
+  #services .service-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  #services .service-art { max-width: 100%; margin-inline: auto; }
+  #services .service-body > div { min-width: 0; }
+  #services .service-tags { flex-wrap: wrap; }
+
+  #ai-in-action .feature-controls { flex-wrap: wrap; gap: 12px; }
+  #ai-in-action .feature-controls-actions { flex-wrap: wrap; gap: 12px; }
+  #ai-in-action .feature-controls button { min-height: 44px; }
+
+  #about .principles { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  #about .principles > div { display: block; min-width: 0; padding: 0; border: 0; }
+  #about .principles > div > span { display: block; color: #c82aef; }
+  #about .principles h3 { margin: 16px 0 12px; }
+  #about .principles p { margin: 0; max-width: 38ch; }
+}
+
+/* Touchscreens can retain :hover after a tap. Never pause the logo strip for that. */
+@media (hover: none), (pointer: coarse) {
+  .tools-marquee:hover .tool-logo-track { animation-play-state: running; }
+  .project-cursor,
+  .pointer-follower { display: none; }
+  #work .project-visual:hover { transform: none; }
+}
+/* Existing motion-off, reduced-motion and offscreen pausing still take priority. */

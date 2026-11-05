@@ -99,8 +99,8 @@ export function initFeatureExplorer(explorer) {
   function activate(index, { manual = false, focus = false } = {}) {
     if (manual) stopTour();
     current = (index + tabs.length) % tabs.length;
-    // Manual selection shows the complete preview immediately; Replay retains the demo.
-    elapsed = manual ? demoDuration(current) : 0;
+    // A touch-sized layout plays the selected demo; desktop keeps its immediate preview.
+    elapsed = manual && !compactQuery.matches ? demoDuration(current) : 0;
     renderedStep = -1;
     tourElapsed = 0;
     tabs.forEach((tab, i) => {
@@ -219,14 +219,13 @@ export function initFeatureExplorer(explorer) {
   document.getElementById("feature-controls").hidden = false;
   activate(current);
   if ("IntersectionObserver" in window) {
-    // Start only after a meaningful portion of the preview enters the viewport.
+    // Tall mobile panels may never reach a 40% visible ratio. Start when they enter.
     const observer = new IntersectionObserver(
       (entries) => {
-        visible =
-          entries[0].isIntersecting && entries[0].intersectionRatio >= 0.4;
+        visible = entries[0].isIntersecting;
         syncTimer();
       },
-      { threshold: 0.4 },
+      { threshold: 0 },
     );
     observer.observe(workspace);
     observers.push(observer);

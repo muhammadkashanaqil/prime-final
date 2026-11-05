@@ -1,5 +1,5 @@
 import PrimeGlobe from "@/components/PrimeGlobe";
-import { MotionButton } from "@/components/ui/Controls";
+import { MotionButton } from "@/components/ui/Controls1";
 
 export default function Hero() {
   return (

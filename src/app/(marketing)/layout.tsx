@@ -1,7 +1,7 @@
 import IconDefinitions from "@/components/sections/IconDefinitions";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
-import SiteEffects from "@/components/SiteEffects";
+import SiteEffects from "@/components/SiteEffects1";
 import DialogHost from "@/components/DialogHost";
 import ChatWidget from "@/components/chatbot/ChatWidget";
 import { getPresentationSettings as getSiteSettings } from "@/lib/site-presentation";

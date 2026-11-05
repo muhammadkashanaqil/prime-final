@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MotionButton } from "@/components/ui/Controls";
+import { MotionButton } from "@/components/ui/Controls1";
 
 export default function Footer({ settings }) {
   const email = settings?.email || "info@primeautomationpl.com";

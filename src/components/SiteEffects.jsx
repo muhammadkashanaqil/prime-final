@@ -134,6 +134,29 @@ export default function SiteEffects() {
     const heroMedia = hero?.querySelector("video");
     let heroVisible = true;
     let backgroundPaused = null;
+    let videoBlocked = false;
+    let playbackActive = true;
+    function markVideoBlocked(blocked) {
+      if (!playbackActive || !heroMedia) return;
+      videoBlocked = blocked;
+      heroMedia.dataset.autoplayBlocked = String(blocked);
+      document.dispatchEvent(
+        new CustomEvent("prime:videoblocked", { detail: { blocked } }),
+      );
+    }
+    function playHeroVideo() {
+      if (!heroMedia) return;
+      heroMedia.muted = true;
+      heroMedia.defaultMuted = true;
+      heroMedia.playsInline = true;
+      try {
+        Promise.resolve(heroMedia.play()).catch((error) => {
+          if (error?.name === "NotAllowedError") markVideoBlocked(true);
+        });
+      } catch (error) {
+        if (error?.name === "NotAllowedError") markVideoBlocked(true);
+      }
+    }
     function syncPlayback() {
       const paused =
         document.hidden || Boolean(document.querySelector("dialog[open]"));
@@ -149,7 +172,7 @@ export default function SiteEffects() {
       // The uploaded hero video follows the same visibility and motion controls.
       if (heroMedia) {
         if (heroPaused) heroMedia.pause();
-        else if (heroMedia.paused) heroMedia.play()?.catch(() => {});
+        else if (heroMedia.paused && !videoBlocked) playHeroVideo();
       }
     }
     if (hero && "IntersectionObserver" in window) {
@@ -181,6 +204,7 @@ export default function SiteEffects() {
     listen(document, "visibilitychange", syncPlayback);
     listen(document, "prime:motionchange", syncPlayback);
     listen(heroMedia, "loadedmetadata", syncPlayback);
+    listen(heroMedia, "playing", () => markVideoBlocked(false));
     syncPlayback();
 
     const cursor = document.querySelector(".project-cursor");
@@ -231,6 +255,7 @@ export default function SiteEffects() {
     );
 
     return () => {
+      playbackActive = false;
       abort.abort();
       observers.forEach((observer) => observer.disconnect());
       pageReveals.forEach((node) => {

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useSite } from "@/components/SiteProvider";
 
 export function MenuToggle() {
@@ -24,18 +25,52 @@ export function MenuToggle() {
 
 export function MotionButton({ location }) {
   const { motionOff, toggleMotion } = useSite();
+  const [videoBlocked, setVideoBlocked] = useState(false);
+  useEffect(() => {
+    const sync = () => setVideoBlocked(
+      document.querySelector("#home video")?.dataset.autoplayBlocked === "true",
+    );
+    sync();
+    document.addEventListener("prime:videoblocked", sync);
+    return () => document.removeEventListener("prime:videoblocked", sync);
+  }, []);
+
+  function handleMotion() {
+    const video = document.querySelector("#home video");
+    const retryBlocked = location === "hero" && videoBlocked;
+    const retryVideo = video && (motionOff || retryBlocked);
+    if (motionOff || !retryBlocked) toggleMotion();
+    if (!retryVideo) return;
+    // Call play inside the tap handler: mobile browsers may reject autoplay.
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    const report = (blocked) => {
+      video.dataset.autoplayBlocked = String(blocked);
+      document.dispatchEvent(
+        new CustomEvent("prime:videoblocked", { detail: { blocked } }),
+      );
+    };
+    try {
+      Promise.resolve(video.play()).then(() => report(false)).catch((error) => {
+        if (error?.name === "NotAllowedError") report(true);
+      });
+    } catch (error) {
+      if (error?.name === "NotAllowedError") report(true);
+    }
+  }
   if (location === "hero") {
     return (
       <button
         id="hero-motion-toggle"
         type="button"
         aria-pressed={motionOff}
-        onClick={toggleMotion}
+        onClick={handleMotion}
       >
         <svg className="icon" aria-hidden="true">
-          <use href={motionOff ? "#i-play" : "#i-pause"} />
+          <use href={motionOff || videoBlocked ? "#i-play" : "#i-pause"} />
         </svg>
-        <span>{motionOff ? "Resume motion" : "Pause motion"}</span>
+        <span>{motionOff ? "Resume motion" : videoBlocked ? "Play animation" : "Pause motion"}</span>
       </button>
     );
   }
@@ -47,7 +82,7 @@ export function MotionButton({ location }) {
       aria-label={
         motionOff ? "Enable decorative animation" : "Pause decorative animation"
       }
-      onClick={toggleMotion}
+      onClick={handleMotion}
     >
       Motion: {motionOff ? "off" : "on"}{" "}
       <span aria-hidden="true">{motionOff ? "○" : "◉"}</span>

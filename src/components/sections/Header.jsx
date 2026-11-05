@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MenuToggle } from "@/components/ui/Controls";
+import { MenuToggle } from "@/components/ui/Controls1";
 export default function Header() {
   const pathname = usePathname();
   const inner = pathname !== "/";
