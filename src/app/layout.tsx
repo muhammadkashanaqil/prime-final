@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { getPresentationSettings } from "@/lib/site-presentation";
 import localFont from "next/font/local";
 import "@/styles/styles.css";
-import "@/styles/mobile-fixes.css";
 import "@/styles/features.css";
 import "@/styles/hero.css";
 import "@/styles/motion.css";
@@ -10,6 +9,7 @@ import "./globals.css";
 import "@/styles/pages.css";
 import "@/styles/admin.css";
 import "@/styles/chat.css";
+import "@/styles/mobile-fixes.css";
 import { SiteProvider } from "@/components/SiteProvider";
 
 const inter = localFont({
